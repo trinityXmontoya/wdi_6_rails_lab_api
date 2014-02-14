@@ -1,4 +1,10 @@
 class ArticlesController < ApplicationController
+
+  # remove root node from JSON
+  def default_serializer_options
+    {root: false}
+  end
+
   # GET /articles
   # GET /articles.json
   def index
