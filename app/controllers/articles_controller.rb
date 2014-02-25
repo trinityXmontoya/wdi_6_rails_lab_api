@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
 
   # remove root node from JSON
-  def default_serializer_options
-    {root: false}
-  end
+  # def default_serializer_options
+  #   {root: false}
+  # end
 
   # GET /articles
   # GET /articles.json
@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(params[:article])
+    @article = Article.new(article_params)
 
     if @article.save
       render json: @article, status: :created, location: @article
@@ -36,9 +36,9 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    @article = Article.find(params[:id])
+    @article = Article.find(article_params[:id])
 
-    if @article.update(params[:article])
+    if @article.update(article_params[:article])
       head :no_content
     else
       render json: @article.errors, status: :unprocessable_entity
@@ -48,9 +48,16 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    @article = Article.find(params[:id])
+    @article = Article.find(article_params[:id])
     @article.destroy
 
     head :no_content
   end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:title, :body, :id)
+  end
+
 end
