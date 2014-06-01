@@ -1,4 +1,4 @@
-num_users = 300
+num_users = 30
 num_users.times do |i|
   User.create!(email: Faker::Internet.email)  
 end
@@ -22,7 +22,7 @@ end
 
 # Add a bunch of comments to the last Article
 last_article = Article.last
-100.times do |i|
+50.times do |i|
     the_user = User.find(rand(1..num_users))
     last_article.comments.create!(body: Faker::Lorem.paragraphs(i+1).join(' '), user: the_user)
 end
