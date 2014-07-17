@@ -116,6 +116,7 @@ In Chrome go to [localhost](http://localhost:3000) to show all the Articles and 
   ``rake db:create``  
   ``rake db:migrate``  
   ``rake db:seed``
+(before seeding make sure you set up the proper relationships in your models!)
   
 
 This will create 30 Users, 10 Articles	and and each Article will have some Comments. _Take a look at the seed file if your curious._
