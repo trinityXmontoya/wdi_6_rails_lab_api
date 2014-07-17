@@ -93,8 +93,7 @@ In Chrome go to [localhost](http://localhost:3000) to show all the Articles and 
 
 	Notice how 'thin' this controller is. Missing lots of code typically found in a controller.
 	
-   It has all the actions BUT only outputs a JSON "Representation" of the resource. Previously we where always outputting a HTML "Representation" of the resource.
-
+   It has most of default actions, _missing new and create_. BUT this app only provides a JSON "Representation" of the resource. Previously we where always outputting a HTML "Representation" of the resource.
 
 
 * Generate a User model.  
@@ -109,9 +108,15 @@ In Chrome go to [localhost](http://localhost:3000) to show all the Articles and 
 
 	``cp ../wdi_6_rails_lab_api/db/seeds.rb h db/seeds.rb``  
 
+* Add faker to the Gemfile, used to seed the DB, and bundle.  
+
+	``gem faker``   
+
 * Create and seed the DB.  
   ``rake db:create``  
-  ``rake db:migrate``
+  ``rake db:migrate``  
+  ``rake db:seed``
+  
 
 This will create 30 Users, 10 Articles	and and each Article will have some Comments. _Take a look at the seed file if your curious._
 
@@ -122,9 +127,6 @@ Why don't we need the new and edit action?
 
 * Add a root route for articles index.  
   ``root 'articles#index'``
-
-* Add faker to the Gemfile and bundle and seed the DB.  
-	``gem faker``   
 
 	Now we have a set of Users, Articles and Comments.
 	
